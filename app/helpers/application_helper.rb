@@ -4,7 +4,7 @@ module ApplicationHelper
       <input
         type="hidden"
         name="authenticity_token"
-        value="<%= form_authenticity_token %>">
+        value="#{form_authenticity_token}">
     HTML
     input.html_safe
   end
