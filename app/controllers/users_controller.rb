@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: :show
+  before_action :redirect_if_logged_in, only: [:new, :create]
+
   def new
     @user = User.new
     render :signup
@@ -16,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     render :show
   end
 
