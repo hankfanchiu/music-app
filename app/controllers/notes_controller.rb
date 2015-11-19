@@ -30,7 +30,7 @@ class NotesController < ApplicationController
 
   def destroy
     @note = Note.destroy(params[:id])
-    redirect_to 'tracks/show'
+    redirect_to track_url(@note.track)
   end
 
   private
