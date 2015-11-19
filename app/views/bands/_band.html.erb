@@ -1,7 +1,9 @@
 <% unless band.albums.empty? %>
   <ul>
+    <% band.albums.each do |album| %>
     <li>
-      <%= band.albums.name %>
+      <%= album.name %>
     </li>
+    <% end %>
   </ul>
 <% end %>

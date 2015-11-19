@@ -17,7 +17,7 @@
       Type:
     </td>
     <td>
-      <%= @track.type %>
+      <%= @track.track_type.capitalize %>
     </td>
   </tr>
   <tr>
@@ -25,7 +25,7 @@
       Lyrics:
     </td>
     <td>
-      <%= @track.lyrics %>
+      <%= @track.lyrics.empty? ? "None" : @track.lyrics %>
     </td>
   </tr>
 </table>

@@ -1,0 +1,7 @@
+<% content_for(:session) do %>
+  <%= render 'shared/session_bar' %>
+<% end %>
+
+<h1>Add a Track</h1>
+
+<%= render 'form', track: @track %>

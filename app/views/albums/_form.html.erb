@@ -12,11 +12,13 @@
         <label for="band_id">Band name:</label>
       </td>
       <td>
-        <select name="album[band_id]" id="band_id" value="<%= album.band %>">
+        <select name="album[band_id]" id="band_id">
           <option></option>
           <% Band.all.each do |band| %>
-            <option value="<%= band.id %>">
-              <%= band.name %>
+            <option
+              value="<%= band.id %>"
+              <%= "selected" if album.band_id == band.id %>>
+                <%= band.name %>
             </option>
           <% end %>
       </td>
@@ -38,7 +40,9 @@
           <input
             type="radio"
             name="album[recording_type]"
-            value="<%= recording_type %>"> <%= recording_type.capitalize %>
+            value="<%= recording_type %>"
+            <%= "checked" if album.recording_type == recording_type %>>
+            <%= recording_type.capitalize %>
         <% end %>
       </td>
     </tr>
