@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
 
+  has_many :notes, dependent: :destroy
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64
   end
