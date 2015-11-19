@@ -1,0 +1,12 @@
+<% content_for(:session) do %>
+  <%= render 'shared/session_bar' %>
+<% end %>
+
+<h1>Bands</h1>
+
+<% @bands.includes(:albums).each do |band| %>
+  <%= render band %>
+<% end %>
+
+
+<%= link_to "Add a band", new_band_url %>

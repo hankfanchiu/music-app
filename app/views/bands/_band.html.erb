@@ -1,0 +1,9 @@
+<h3><%= band.name %></h3>
+
+<% unless band.albums.empty? %>
+  <ul>
+    <li>
+      <%= band.albums.name %>
+    </li>
+  </ul>
+<% end %>
