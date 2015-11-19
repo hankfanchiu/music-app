@@ -14,7 +14,7 @@ class BandsController < ApplicationController
     if @band.save
       redirect_to band_url(@band)
     else
-      flash[:errors] = @band.errors.full_messages
+      flash.now[:errors] = @band.errors.full_messages
       render :new
     end
   end
@@ -29,7 +29,7 @@ class BandsController < ApplicationController
     if @band.update(band_params)
       redirect_to band_url(@band)
     else
-      flash[:errors] = @band.errors.full_messages
+      flash.now[:errors] = @band.errors.full_messages
       render :edit
     end
   end
@@ -40,13 +40,8 @@ class BandsController < ApplicationController
   end
 
   def destroy
-    @band = Band.find(params[:id])
-    if @band.delete
-      redirect_to bands_url
-    else
-      flash[:errors] = @band.errors.full_messages
-      render :show
-    end
+    Band.delete(params[:id])
+    redirect_to bands_url
   end
 
   private
