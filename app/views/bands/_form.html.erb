@@ -1,0 +1,9 @@
+<% action = bands_url %>
+<% method = @band.persisted? ? :patch : :post %>
+
+<form action="<%= action %>" method="<%= method %>">
+  <%= auth_token %>
+  <label for="band_name">Band name:</label>
+  <input type="text" name="band[name]" value="<%= @band.name %>">
+  <input type="submit" value="Submit">
+</form>
