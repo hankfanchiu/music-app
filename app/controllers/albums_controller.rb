@@ -36,6 +36,11 @@ class AlbumsController < ApplicationController
     redirect_to band_url(@album.band_id)
   end
 
+  def show
+    @album = Album.find(params[:id])
+    render :show
+  end
+
   private
 
   def album_params

@@ -6,8 +6,43 @@
   <%= auth_token %>
   <input type="hidden" name="_method" value="<%= method %>">
 
-  <label for="album_name">Album name:</label>
-  <input type="text" name="album[name]" value="<%= album.name %>">
+  <table>
+    <tr>
+      <td>
+        <label for="band_id">Band name:</label>
+      </td>
+      <td>
+        <select name="album[band_id]" id="band_id" value="<%= album.band %>">
+          <option></option>
+          <% Band.all.each do |band| %>
+            <option value="<%= band.id %>">
+              <%= band.name %>
+            </option>
+          <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="album_name">Album name:</label>
+      </td>
+      <td>
+        <input type="text" name="album[name]" value="<%= album.name %>">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="album_recording_type">Recording Type:</label>
+      </td>
+      <td>
+        <% Album::RECORDING_TYPE.each do |recording_type| %>
+          <input
+            type="radio"
+            name="album[recording_type]"
+            value="<%= recording_type %>"> <%= recording_type.capitalize %>
+        <% end %>
+      </td>
+    </tr>
+  </table>
 
   <input type="submit" value="<%= button_value %>">
 </form>
