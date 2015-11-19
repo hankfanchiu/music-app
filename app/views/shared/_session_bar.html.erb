@@ -1,6 +1,8 @@
-<% if logged_in %>
-  <div style="width: auto">
-    Logged in as <%= current_user.email %> |
+<% if logged_in? %>
+  <div style="float: left; width: auto;">
+    Logged in as <%= current_user.email %>&nbsp;
+  </div>
+  <div>
     <%= button_to "Logout", session_url, method: :delete %>
   </div>
 <% else %>

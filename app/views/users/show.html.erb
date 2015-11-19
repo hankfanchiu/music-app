@@ -1,0 +1,5 @@
+<h1><%= current_user.email %></h1>
+
+<% content_for(:session) do %>
+  <%= render 'shared/session_bar' %>
+<% end %>
