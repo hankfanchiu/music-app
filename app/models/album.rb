@@ -1,3 +1,6 @@
 class Album < ActiveRecord::Base
-  validates :name, presence :true
+  RECORDING_TYPE = %w(live studio)
+
+  validates :name, :band_id, :recording_type, presence :true
+  validates :recording_type, inclusion: RECORDING_TYPE
 end

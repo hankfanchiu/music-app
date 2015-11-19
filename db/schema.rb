@@ -14,13 +14,14 @@
 ActiveRecord::Schema.define(version: 20151119192614) do
 
   create_table "albums", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "band_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",           null: false
+    t.string   "recording_type", null: false
+    t.integer  "band_id",        null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  add_index "albums", ["band_id"], name: "index_albums_on_band_id", unique: true
+  add_index "albums", ["band_id"], name: "index_albums_on_band_id"
   add_index "albums", ["name"], name: "index_albums_on_name"
 
   create_table "bands", force: :cascade do |t|
