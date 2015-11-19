@@ -3,6 +3,7 @@ class CreateTracks < ActiveRecord::Migration
     create_table :tracks do |t|
       t.string :name, null: false
       t.string :track_type, null: false
+      t.text :lyrics
       t.integer :album_id, null: false
 
       t.timestamps null: false

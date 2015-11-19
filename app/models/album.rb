@@ -5,5 +5,5 @@ class Album < ActiveRecord::Base
   validates :recording_type, inclusion: RECORDING_TYPE
 
   belongs_to :band
-  has_many :tracks
+  has_many :tracks, dependent: :destroy
 end
