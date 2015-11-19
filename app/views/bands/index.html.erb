@@ -2,9 +2,10 @@
   <%= render 'shared/session_bar' %>
 <% end %>
 
-<h1>Bands</h1>
+<h1>All Bands</h1>
 
 <% @bands.includes(:albums).each do |band| %>
+  <h3><%= link_to band.name, band_url(band) %></h3>
   <%= render band %>
 <% end %>
 

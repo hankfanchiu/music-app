@@ -2,4 +2,14 @@
   <%= render 'shared/session_bar' %>
 <% end %>
 
+<h1><%= @band.name %></h1>
+
 <%= render 'band', band: @band %>
+
+<%= link_to "Edit",
+      edit_band_url(@band),
+      method: :get %>
+<%= link_to "Delete",
+      band_url(@band),
+      method: :delete,
+      data: { confirm: "Are you sure you want to delete #{@band.name}?" } %>

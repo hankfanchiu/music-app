@@ -1,9 +1,11 @@
-<% action = bands_url %>
+<% action = @band.persisted? ? band_url(@band) : bands_url %>
 <% method = @band.persisted? ? :patch : :post %>
+<% button_value = @band.persisted? ? "Update" : "Submit" %>
 
-<form action="<%= action %>" method="<%= method %>">
+<form action="<%= action %>" method="post">
   <%= auth_token %>
+  <input type="hidden" name="_method" value="<%= method %>">
   <label for="band_name">Band name:</label>
   <input type="text" name="band[name]" value="<%= @band.name %>">
-  <input type="submit" value="Submit">
+  <input type="submit" value="<%= button_value %>">
 </form>
