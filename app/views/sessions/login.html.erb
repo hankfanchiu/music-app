@@ -1,0 +1,10 @@
+<h1>Music App</h1>
+
+<form action="<%= session_url %>" method="post">
+  <input type="text" name="session[email]" placeholder="Email">
+  <input type="password" name="session[password]" placeholder="Password">
+  <input type="submit" value="Login">
+</form>
+
+<%= link_to "New user?", new_users_url %>
+

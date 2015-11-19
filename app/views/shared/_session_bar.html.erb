@@ -1,0 +1,10 @@
+<% if logged_in %>
+  <div style="width: auto">
+    Logged in as <%= current_user.email %> |
+    <%= button_to "Logout", session_url, method: :delete %>
+  </div>
+<% else %>
+  <div style="width: auto">
+    <%= button_to "Login", new_session_url, method: :get %>
+  </div>
+<% end %>
