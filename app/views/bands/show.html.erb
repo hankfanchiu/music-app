@@ -6,9 +6,12 @@
 
 <%= render 'band', band: @band %>
 
+<%= link_to "Add an album",
+      new_album_url,
+      method: :get %> |
 <%= link_to "Edit",
       edit_band_url(@band),
-      method: :get %>
+      method: :get %> |
 <%= link_to "Delete",
       band_url(@band),
       method: :delete,

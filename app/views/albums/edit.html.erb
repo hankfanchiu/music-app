@@ -1,0 +1,7 @@
+<% content_for(:session) do %>
+  <%= render 'shared/session_bar' %>
+<% end %>
+
+<h1>Edit <%= @album.name %></h1>
+
+<%= render 'form', album: @album %>

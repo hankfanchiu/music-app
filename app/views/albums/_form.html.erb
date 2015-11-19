@@ -1,0 +1,13 @@
+<% action = album.persisted? ? album_url(album) : albums_url %>
+<% method = album.persisted? ? :patch : :post %>
+<% button_value = album.persisted? ? "Update" : "Submit" %>
+
+<form action="<%= action %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="<%= method %>">
+
+  <label for="album_name">Album name:</label>
+  <input type="text" name="album[name]" value="<%= album.name %>">
+
+  <input type="submit" value="<%= button_value %>">
+</form>

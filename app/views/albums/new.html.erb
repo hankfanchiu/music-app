@@ -1,0 +1,16 @@
+<% content_for(:session) do %>
+  <%= render 'shared/session_bar' %>
+<% end %>
+
+<h1>Add an Album</h1>
+
+<label for="band_id">Band name:</label>
+<select name="band[id]" id="band_id" value="<%= @album.band %>">
+  <option></option>
+  <% Band.all.each do |band| %>
+    <option value="<%= band.id %>">
+      <%= band.name %>
+    </option>
+  <% end %>
+
+<%= render 'form', album: @album %>
