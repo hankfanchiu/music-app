@@ -3,4 +3,7 @@ class Album < ActiveRecord::Base
 
   validates :name, :band_id, :recording_type, presence :true
   validates :recording_type, inclusion: RECORDING_TYPE
+
+  belongs_to :band
+  has_many :tracks
 end

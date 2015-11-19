@@ -3,4 +3,6 @@ class Track < ActiveRecord::Base
 
   validates :name, :track_type, :album_id, presence: true
   validates :track_type, inclusion: TRACK_TYPE
+
+  belongs_to :album
 end
