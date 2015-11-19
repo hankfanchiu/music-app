@@ -39,6 +39,16 @@ class BandsController < ApplicationController
     render :show
   end
 
+  def destroy
+    @band = Band.find(params[:id])
+    if @band.delete
+      redirect_to bands_url
+    else
+      flash[:errors] = @band.errors.full_messages
+      render :show
+    end
+  end
+
   private
 
   def band_params
