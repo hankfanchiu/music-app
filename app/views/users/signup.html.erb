@@ -2,6 +2,7 @@
 
 <h3>Create your account</h3>
 <form action="<%= session_url %>" method="post">
+  <%= auth_token %>
   <input type="text" name="session[email]" placeholder="Email Address">
   <input type="password" name="session[password]" placeholder="Password">
   <input type="submit" value="Create an account">
