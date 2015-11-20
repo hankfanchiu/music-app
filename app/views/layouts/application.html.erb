@@ -8,6 +8,9 @@
 </head>
 <body>
 
+<%= render 'shared/errors' %>
+<%= render 'shared/session_bar' if logged_in? %>
+
 <%= yield(:session) %>
 <%= yield %>
 
