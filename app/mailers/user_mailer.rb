@@ -3,8 +3,9 @@ class UserMailer < ApplicationMailer
     @user = user
     @url = new_session_url
 
-    mail
+    mail(
       to: user.email,
       subject: "Welcome to Music App! Account activation required"
+      )
   end
 end

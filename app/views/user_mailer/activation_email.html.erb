@@ -1,11 +1,12 @@
 <p>
-  Hello, <%= @user %>!
+  Hello, <%= @user.email %>!
 </p>
 <p>
-  Please activate your account by clicking on the following link:
+  Please activate your account by clicking on the link below:
 </p>
 <p>
-  <%= "#{activate_users_url}?#{user.activation_token}" %>
+  <%= link_to "Activate account!",
+    "#{activate_users_url}?#{@user.activation_token}" %>
 </p>
 <p>
   Thanks!<br/>
