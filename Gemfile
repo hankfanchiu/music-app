@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails_12factor'
+gem 'pg'
+gem 'pry-rails'
 gem 'bcrypt', require: 'bcrypt'
+gem 'rails_12factor', group: :production
 gem 'puma'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
-
-gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -41,7 +41,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'letter_opener'
-  gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
