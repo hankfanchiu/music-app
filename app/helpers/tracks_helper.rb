@@ -5,6 +5,6 @@ module TracksHelper
     lines = lyrics.split(/\n/)
     ugly_lyrics = lines.map { |line| "<pre>&#9835; #{h(line)}</pre>" }
 
-    ugly_lyrics.html_safe
+    ugly_lyrics.join("").html_safe
   end
 end
