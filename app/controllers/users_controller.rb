@@ -27,6 +27,13 @@ class UsersController < ApplicationController
     render :show
   end
 
+  def activate
+    query_token = params[:activation_token]
+    @user = User.find_by(activation_token: query_token)
+    @user.toggle!(:activated)
+    redirect_to new_session_url
+  end
+
   private
 
   def user_params

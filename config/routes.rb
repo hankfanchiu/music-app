@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root to: 'sessions#new'
 
-  resource :users, only: [:new, :create, :show]
+  resource :users, only: [:new, :create, :show] do
+    get '/activate', to: 'users#activate'
+  end
+
   resource :session, only: [:new, :create, :destroy]
 
   resources :bands do
