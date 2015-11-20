@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(email, password)
     if @user
       login_user!(@user)
-      redirect_to bands_url
+      redirect_to user_url(@user)
     else
       flash.now[:errors] = ["Login failed"]
       render :login
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     current_user.reset_session_token!
-    redirect_to bands_url
+    redirect_to new_session_url
   end
 
   private

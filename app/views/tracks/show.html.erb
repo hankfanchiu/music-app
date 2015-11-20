@@ -40,3 +40,13 @@
       track_url(@track),
       method: :delete,
       data: { confirm: "Are you sure you want to delete #{@track.name}?" } %>
+
+<h3>Notes</h3>
+
+<% unless @track.notes.empty? %>
+  <% @tracks.notes.each do |note| %>
+    <%= render 'notes/note', note: note %>
+  <% end %>
+<% end %>
+
+<%= render 'notes/form', track: @track %>

@@ -5,12 +5,12 @@ class NotesController < ApplicationController
 
   def create
     @note = current_user.notes.new(note_params)
-    if @note.save
-      redirect_to track_url(@note.track)
-    else
-      flash.now[:errors] = @note.errors.full_messages
-      render 'tracks/show'
+
+    unless @note.save
+      flash[:errors] = @note.errors.full_messages
     end
+
+    redirect_to track_url(@note.track)
   end
 
   def edit
@@ -20,12 +20,12 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    if @note.update(note_params)
-      redirect_to track_url(@note.track)
-    else
+
+    unless @note.update(note_params)
       flash.now[:errors] = @note.errors.full_messages
-      render 'tracks/show'
     end
+
+    redirect_to track_url(@note.track)
   end
 
   def destroy

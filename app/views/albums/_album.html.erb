@@ -1,7 +1,9 @@
 <% unless album.tracks.empty? %>
   <ul>
+    <% album.tracks.each do |track| %>
     <li>
-      <%= album.tracks.name %>
+      <%= link_to track.name, track_url(track) %>
     </li>
+    <% end %>
   </ul>
 <% end %>
