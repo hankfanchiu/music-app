@@ -8,9 +8,14 @@ class SessionsController < ApplicationController
   def create
     email, password = session_params[:email], session_params[:password]
     @user = User.find_by_credentials(email, password)
+
     if @user
-      login_user!(@user)
-      redirect_to users_url(@user)
+      if login_user!(@user)
+        redirect_to users_url(@user)
+      else
+        flash[:errors] = ["Your account has not been activated."]
+        redirect_to new_session_url
+      end
     else
       flash.now[:errors] = ["Login failed"]
       render :login
