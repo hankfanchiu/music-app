@@ -1,0 +1,13 @@
+<p>
+  <strong>Written by <%= note.user.email %></strong>
+</p>
+<p>
+  <%= note.text %>
+</p>
+<%= link_to "Edit",
+      edit_note_url(note),
+      method: :get %> |
+<%= link_to "Delete",
+      note_url(note),
+      method: :delete,
+      data: { confirm: "Are you sure you want to delete this note?" } %>

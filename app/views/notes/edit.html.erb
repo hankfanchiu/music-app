@@ -1,0 +1,3 @@
+<% action = @note.persisted? ? note_url(@note) : notes_url %>
+<% method = @note.persisted? ? :patch : :post %>
+<% button_value = @note.persisted? ? "Update" : "Submit" %>

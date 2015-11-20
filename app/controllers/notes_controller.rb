@@ -10,7 +10,8 @@ class NotesController < ApplicationController
       flash[:errors] = @note.errors.full_messages
     end
 
-    redirect_to track_url(@note.track)
+    @track = @note.track
+    redirect_to track_url(@track.id)
   end
 
   def edit
@@ -25,12 +26,15 @@ class NotesController < ApplicationController
       flash.now[:errors] = @note.errors.full_messages
     end
 
-    redirect_to track_url(@note.track)
+    @track = @note.track
+    redirect_to track_url(@track.id)
   end
 
   def destroy
     @note = Note.destroy(params[:id])
-    redirect_to track_url(@note.track)
+
+    @track = @note.track
+    redirect_to track_url(@track.id)
   end
 
   private
@@ -40,15 +44,13 @@ class NotesController < ApplicationController
   end
 
   def current_user_is_note_writer
-    note_id = params[:id]
-    found_note = current_user.notes.find(id: note_id)
+    found_note = current_user.notes.find(params[:id])
 
     redirect_to bands_url unless found_note
   end
 
   def forbid_destroy_by_non_note_writer
-    note_id = params[:id]
-    found_note = current_user.notes.find(id: note_id)
+    found_note = current_user.notes.find(params[:id])
 
     render text: "403 FORBIDDEN" unless found_note
   end
