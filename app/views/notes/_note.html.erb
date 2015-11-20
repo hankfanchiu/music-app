@@ -4,10 +4,7 @@
 <p>
   <%= note.text %>
 </p>
-<%= link_to "Edit",
-      edit_note_url(note),
-      method: :get %> |
-<%= link_to "Delete",
+<%= link_to "Delete note",
       note_url(note),
       method: :delete,
       data: { confirm: "Are you sure you want to delete this note?" } %>

@@ -11,7 +11,7 @@ class NotesController < ApplicationController
     end
 
     @track = @note.track
-    redirect_to track_url(@track.id)
+    redirect_to track_url(@track)
   end
 
   def edit
@@ -23,11 +23,11 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
 
     unless @note.update(note_params)
-      flash.now[:errors] = @note.errors.full_messages
+      flash[:errors] = @note.errors.full_messages
     end
 
     @track = @note.track
-    redirect_to track_url(@track.id)
+    redirect_to track_url(@track)
   end
 
   def destroy
