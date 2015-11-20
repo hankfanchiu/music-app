@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151120014122) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "albums", force: :cascade do |t|
     t.string   "name",           null: false
     t.string   "recording_type", null: false
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20151120014122) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "albums", ["band_id"], name: "index_albums_on_band_id"
-  add_index "albums", ["name"], name: "index_albums_on_name"
+  add_index "albums", ["band_id"], name: "index_albums_on_band_id", using: :btree
+  add_index "albums", ["name"], name: "index_albums_on_name", using: :btree
 
   create_table "bands", force: :cascade do |t|
     t.string   "name",       null: false
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 20151120014122) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "bands", ["name"], name: "index_bands_on_name", unique: true
+  add_index "bands", ["name"], name: "index_bands_on_name", unique: true, using: :btree
 
   create_table "notes", force: :cascade do |t|
     t.text     "text",       null: false
@@ -40,8 +43,8 @@ ActiveRecord::Schema.define(version: 20151120014122) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "notes", ["track_id"], name: "index_notes_on_track_id"
-  add_index "notes", ["user_id"], name: "index_notes_on_user_id"
+  add_index "notes", ["track_id"], name: "index_notes_on_track_id", using: :btree
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
 
   create_table "tracks", force: :cascade do |t|
     t.string   "name",       null: false
@@ -52,8 +55,8 @@ ActiveRecord::Schema.define(version: 20151120014122) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "tracks", ["album_id"], name: "index_tracks_on_album_id"
-  add_index "tracks", ["name"], name: "index_tracks_on_name"
+  add_index "tracks", ["album_id"], name: "index_tracks_on_album_id", using: :btree
+  add_index "tracks", ["name"], name: "index_tracks_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                            null: false
@@ -65,8 +68,8 @@ ActiveRecord::Schema.define(version: 20151120014122) do
     t.string   "activation_token",                 null: false
   end
 
-  add_index "users", ["activation_token"], name: "index_users_on_activation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true
+  add_index "users", ["activation_token"], name: "index_users_on_activation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
 
 end
