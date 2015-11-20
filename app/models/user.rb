@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :generate_activation_token
 
   validates :email, presence: true, uniqueness: true
   validates :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: true
+  validates :activation_token, presence: true, uniqueness: true
 
   has_many :notes, dependent: :destroy
 
@@ -42,5 +43,9 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
+  end
+
+  def generate_activation_token
+    self.activation_token = SecureRandom.urlsafe_base64
   end
 end
