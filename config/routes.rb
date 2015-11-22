@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'sessions#new'
 
-  resource :users, only: [:new, :create, :show] do
+  resource :user, only: [:new, :create, :show] do
     get '/activate', to: 'users#activate'
   end
 

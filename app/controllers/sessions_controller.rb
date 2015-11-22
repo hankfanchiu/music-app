@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     if @user
       if login_user!(@user)
-        redirect_to users_url(@user)
+        redirect_to user_url(@user)
       else
         flash[:errors] = ["Your account has not been activated."]
         redirect_to new_session_url

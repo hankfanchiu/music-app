@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_logged_in
-    redirect_to users_url if logged_in?
+    redirect_to user_url if logged_in?
   end
 
   def user_activated?(user)
